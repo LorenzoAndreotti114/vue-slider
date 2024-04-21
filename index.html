@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- HEAD -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Array Carousel with Objects</title>
+
+  <!-- VueJS Script -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Montserrat google font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet" />
+
+  <!-- Font-Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <!-- Custom style -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<!-- BODY -->
+<body>
+  <main>
+    
+    <!-- CONTAINER FOR MEDIA QUERY -->
+    <div class="master-container" id="app">
+
+      <div class="container">
+
+        <!-- CAROSEL -->
+        <div class="carosel">
+
+          <!-- CAROSEL TOP -->
+          <div class="inner-carosel" id="caroselTop">
+
+            <!-- IMMAGINE COPERTINA INTERCAMBIABILE -->
+            <div class="big-card-container fade" id="bigCard">
+
+              <!-- IMG -->
+              <img :src="arrayImages[curImg].image" alt="">
+      
+              <!-- TEXT -->
+              <div class="big-card-text">
+                  <h2>{{ arrayImages[curImg].title }}</h2>
+      
+                  <div class="f-size">{{ arrayImages[curImg].text }}</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CAROSEL BOTTOM -->
+          <div class="inner-carosel-bottom" id="caroselBottom">
+
+            <div class="little-card-container shaded" v-for="(littleImages, index) in arrayImages">
+              <button class="card-btn" @click="showCurImg(index)">
+                <img :src="littleImages.image" alt="">
+              </button>
+            </div>
+
+            <!-- BUTTON LEFT -->
+            <div class="btn-left" @click="showPrev">
+              <button><i class="fa-solid fa-hand-point-left"></i></button>
+            </div>
+
+            <!-- BUTTON RIGHT -->
+            <div class="btn-right" @click="showNext">
+              <button><i class="fa-solid fa-hand-point-right"></i></button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="btn-container">
+
+          <div class="inner-btn">
+
+            <!-- START/STOP -->
+            <input type="button" class="bottom-btns" value="START / STOP" @click="toggleCarosel">
+
+            <!-- INVERT CAROSEL -->
+            <input type="button" class="bottom-btns" value="INVERTI L'ORDINE DI SCORRIMENTO">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
